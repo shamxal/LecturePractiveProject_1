@@ -9,15 +9,8 @@ import UIKit
 
 class CityListController: UIViewController {
 
-    var key = ""
     var titleText = ""
-    let cityList = ["aze": ["Baku", "Ganja", "Shusha"],
-                    "tur": ["Istanbul", "Izmir", "Mugla"],
-                    "usa": ["Los Angeles", "New York", "Boston"]]
-    
-    let cityImages = ["aze": ["baku", "ganja", "susa"],
-                      "tur": ["istanbul", "izmir", "mugla"],
-                      "usa": ["la", "ny", "bos"]]
+    var cityModel = [CityModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +21,21 @@ class CityListController: UIViewController {
 
 extension CityListController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cityList[key]?.count ?? 0
+        cityModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CityCell.self)", for: indexPath) as! CityCell
-        cell.titleLabel.text = cityList[key]?[indexPath.item]
-        cell.cityImage.image = UIImage(named: cityImages[key]?[indexPath.item] ?? "")
+        cell.titleLabel.text = cityModel[indexPath.item].name
+        cell.cityImage.image = UIImage(named: cityModel[indexPath.item].image)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "CityController") as! CityController
-        controller.key = cityImages[key]?[indexPath.item] ?? ""
-        controller.titleText = cityList[key]?[indexPath.item] ?? ""
+//        controller.key = cityImages[key]?[indexPath.item] ?? ""
+//        controller.titleText = cityList[key]?[indexPath.item] ?? ""
+        controller.city = cityModel[indexPath.item]
         show(controller, sender: nil)
     }
     

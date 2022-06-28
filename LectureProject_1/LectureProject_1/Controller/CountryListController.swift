@@ -8,9 +8,18 @@
 import UIKit
 
 class CountryListController: UIViewController {
-
-    var keys = ["aze", "tur", "usa"]
-    var countryArray = ["Azerbaijan", "Turkey", "USA"]
+    var model = [CountryModel(name: "Azerbaijan", flag: "aze",
+                              cities: [CityModel(name: "Baku", image: "baku", text: "alkjdlaskld"),
+                                       CityModel(name: "Ganja", image: "ganja", text: "alkjdlaskld"),
+                                       CityModel(name: "Shusha", image: "susa", text: "alkjdlaskld")]),
+                 CountryModel(name: "Turkey", flag: "tur",
+                                           cities: [CityModel(name: "Istanbul", image: "istanbul", text: "alkjdlaskld"),
+                                                    CityModel(name: "Izmir", image: "izmir", text: "alkjdlaskld"),
+                                                    CityModel(name: "Mugla", image: "mugla", text: "alkjdlaskld")]),
+                 CountryModel(name: "USA", flag: "usa",
+                                           cities: [CityModel(name: "Los Angeles", image: "la", text: "alkjdlaskld"),
+                                                    CityModel(name: "New York", image: "ny", text: "alkjdlaskld"),
+                                                    CityModel(name: "Boston", image: "bos", text: "alkjdlaskld")])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,19 +28,23 @@ class CountryListController: UIViewController {
 
 extension CountryListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        countryArray.count
+        model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(CountryCell.self)") as! CountryCell
-        cell.titleLabel.text = countryArray[indexPath.row]
+//        let data = model[indexPath.row]
+//        cell.titleLabel.text = data.name
+        cell.titleLabel.text = model[indexPath.row].name
+//        cell.imageView?.image = UIImage(named: model[indexPath.row].flag)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = model[indexPath.row]
         let controller = storyboard?.instantiateViewController(withIdentifier: "CityListController") as! CityListController
-        controller.key = keys[indexPath.row]
-        controller.titleText = countryArray[indexPath.row]
+        controller.titleText = data.name
+        controller.cityModel = data.cities
         show(controller, sender: nil)
     }
 }
