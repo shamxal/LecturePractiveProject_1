@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class CountryListController: UIViewController {
+    @IBOutlet weak var table: UITableView!
     var model = [CountryModel(name: "Azerbaijan", flag: "aze",
                               cities: [CityModel(name: "Baku", image: "baku", text: "alkjdlaskld"),
                                        CityModel(name: "Ganja", image: "ganja", text: "alkjdlaskld"),
@@ -23,6 +25,16 @@ class CountryListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        table.isHidden = true
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.colorProgress = .systemBlue
+        ProgressHUD.colorStatus = .brown
+        ProgressHUD.show("Some text...")
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            self.table.isHidden = false
+            ProgressHUD.dismiss()
+        }
     }
 }
 
@@ -41,6 +53,7 @@ extension CountryListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let data = model[indexPath.row]
         let controller = storyboard?.instantiateViewController(withIdentifier: "CityListController") as! CityListController
         controller.titleText = data.name
