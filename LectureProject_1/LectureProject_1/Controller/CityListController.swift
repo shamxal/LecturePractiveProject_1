@@ -38,6 +38,13 @@ extension CityListController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CityController") as! CityController
+        controller.key = cityImages[key]?[indexPath.item] ?? ""
+        controller.titleText = cityList[key]?[indexPath.item] ?? ""
+        show(controller, sender: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.width / 2 - 10
         return CGSize(width: size, height: size)

@@ -147,6 +147,49 @@
             </objects>
             <point key="canvasLocation" x="1643" y="125"/>
         </scene>
+        <!--City Controller-->
+        <scene sceneID="c5Z-4m-VYT">
+            <objects>
+                <viewController storyboardIdentifier="CityController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z3Q-f6-1SN" customClass="CityController" customModule="LectureProject_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cSY-F3-2kQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mhs-xu-RDC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="mW1-JT-Mdq"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHV-BA-EfC">
+                                <rect key="frame" x="8" y="352" width="398" height="502"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TWN-Az-taY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TWN-Az-taY" firstAttribute="trailing" secondItem="iHV-BA-EfC" secondAttribute="trailing" constant="8" id="JfD-br-2r5"/>
+                            <constraint firstItem="iHV-BA-EfC" firstAttribute="top" secondItem="mhs-xu-RDC" secondAttribute="bottom" constant="8" id="TXR-pJ-W7H"/>
+                            <constraint firstItem="mhs-xu-RDC" firstAttribute="trailing" secondItem="TWN-Az-taY" secondAttribute="trailing" id="XOK-Y6-LE3"/>
+                            <constraint firstItem="mhs-xu-RDC" firstAttribute="leading" secondItem="TWN-Az-taY" secondAttribute="leading" id="Ypv-aE-YCR"/>
+                            <constraint firstItem="mhs-xu-RDC" firstAttribute="top" secondItem="TWN-Az-taY" secondAttribute="top" id="co6-nU-3aw"/>
+                            <constraint firstItem="iHV-BA-EfC" firstAttribute="leading" secondItem="TWN-Az-taY" secondAttribute="leading" constant="8" id="iLi-zH-ded"/>
+                            <constraint firstItem="TWN-Az-taY" firstAttribute="bottom" secondItem="iHV-BA-EfC" secondAttribute="bottom" constant="8" id="ySR-4D-AAK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityImage" destination="mhs-xu-RDC" id="nxU-94-3TD"/>
+                        <outlet property="cityInfoTextView" destination="iHV-BA-EfC" id="bUN-TM-a6D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OUE-of-mG4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2347.826086956522" y="124.55357142857142"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="tX3-17-ZBR">
             <objects>
@@ -168,6 +211,9 @@
     </scenes>
     <resources>
         <image name="la" width="1280" height="700"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
