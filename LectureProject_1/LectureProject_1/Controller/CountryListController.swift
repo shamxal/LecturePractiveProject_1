@@ -10,18 +10,20 @@ import ProgressHUD
 
 class CountryListController: UIViewController {
     @IBOutlet weak var table: UITableView!
-    var model = [CountryModel(name: "Azerbaijan", flag: "aze",
-                              cities: [CityModel(name: "Baku", image: "baku", text: "alkjdlaskld"),
-                                       CityModel(name: "Ganja", image: "ganja", text: "alkjdlaskld"),
-                                       CityModel(name: "Shusha", image: "susa", text: "alkjdlaskld")]),
-                 CountryModel(name: "Turkey", flag: "tur",
-                                           cities: [CityModel(name: "Istanbul", image: "istanbul", text: "alkjdlaskld"),
-                                                    CityModel(name: "Izmir", image: "izmir", text: "alkjdlaskld"),
-                                                    CityModel(name: "Mugla", image: "mugla", text: "alkjdlaskld")]),
-                 CountryModel(name: "USA", flag: "usa",
-                                           cities: [CityModel(name: "Los Angeles", image: "la", text: "alkjdlaskld"),
-                                                    CityModel(name: "New York", image: "ny", text: "alkjdlaskld"),
-                                                    CityModel(name: "Boston", image: "bos", text: "alkjdlaskld")])]
+    
+    var model = [CountryModel]()
+//    [CountryModel(name: "Azerbaijan", flag: "aze",
+//                              cities: [CityModel(name: "Baku", image: "baku", text: "alkjdlaskld"),
+//                                       CityModel(name: "Ganja", image: "ganja", text: "alkjdlaskld"),
+//                                       CityModel(name: "Shusha", image: "susa", text: "alkjdlaskld")]),
+//                 CountryModel(name: "Turkey", flag: "tur",
+//                                           cities: [CityModel(name: "Istanbul", image: "istanbul", text: "alkjdlaskld"),
+//                                                    CityModel(name: "Izmir", image: "izmir", text: "alkjdlaskld"),
+//                                                    CityModel(name: "Mugla", image: "mugla", text: "alkjdlaskld")]),
+//                 CountryModel(name: "USA", flag: "usa",
+//                                           cities: [CityModel(name: "Los Angeles", image: "la", text: "alkjdlaskld"),
+//                                                    CityModel(name: "New York", image: "ny", text: "alkjdlaskld"),
+//                                                    CityModel(name: "Boston", image: "bos", text: "alkjdlaskld")])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,24 @@ class CountryListController: UIViewController {
         table.delegate = self
         table.register(UINib(nibName: "\(NewCountryCell.self)", bundle: nil), forCellReuseIdentifier: "\(NewCountryCell.self)")
 //        progressSetup()
+        Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
+            self.jsonSetup()
+        }
+    }
+    
+    func jsonSetup() {
+        if let jsonFile = Bundle.main.url(forResource: "Country", withExtension: "json"), let data = try? Data(contentsOf: jsonFile) {
+            do {
+                model = try JSONDecoder().decode([CountryModel].self, from: data)
+                table.reloadData()
+            } catch {
+                print(error.localizedDescription)
+            }
+        } else {
+            
+        }
+        
+        print("")
     }
     
     func progressSetup() {
@@ -71,12 +91,7 @@ extension CountryListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let data = model[indexPath.row]
-//        let controller = storyboard?.instantiateViewController(withIdentifier: "CityListController") as! CityListController
-//        controller.titleText = data.name
-//        controller.cityModel = data.cities
-//        show(controller, sender: nil)
+        navigate(index: indexPath.row)
     }
 }
 

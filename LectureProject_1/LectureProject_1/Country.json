@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Azerbaijan",
+        "flag": "aze",
+        "cities": [
+            {
+                "name": "Baku",
+                "image": "baku",
+                "text": "adasdasadasd"
+            },
+            {
+                "name": "Ganja",
+                "image": "ganja",
+                "text": "adasdasadasd"
+            },
+            {
+                "name": "Shusha",
+                "image": "susa",
+                "text": "adasdasadasd"
+            }
+        ]
+    },
+    {
+        "name": "Turkiye",
+        "flag": "tur",
+        "cities": [
+            {
+                "name": "Istanbul",
+                "image": "istanbul",
+                "text": "adasdadasdasdasdas234asadasd"
+            }
+        ]
+    }
+]

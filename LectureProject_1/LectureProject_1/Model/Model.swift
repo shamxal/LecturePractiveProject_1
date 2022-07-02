@@ -29,13 +29,13 @@ import Foundation
  
  */
 
-struct CountryModel {
+struct CountryModel: Codable {
     let name: String
     let flag: String
     let cities: [CityModel]
 }
 
-struct CityModel {
+struct CityModel: Codable {
     let name: String
     let image: String
     let text: String

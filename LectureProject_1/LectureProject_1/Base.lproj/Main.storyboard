@@ -9,16 +9,70 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="moe-TJ-i4W">
+            <objects>
+                <viewController id="Zvf-px-I6Q" customClass="LoginController" customModule="LectureProject_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yax-9p-fWJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJm-p8-Xgj">
+                                <rect key="frame" x="20" y="113" width="374" height="46"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="asd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQL-7T-wc7">
+                                        <rect key="frame" x="8" y="6" width="358" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="tintColor"/>
+                                <constraints>
+                                    <constraint firstItem="MQL-7T-wc7" firstAttribute="centerY" secondItem="JJm-p8-Xgj" secondAttribute="centerY" id="491-x3-Usr"/>
+                                    <constraint firstItem="MQL-7T-wc7" firstAttribute="height" secondItem="JJm-p8-Xgj" secondAttribute="height" multiplier="0.73913" id="I04-qp-B0O"/>
+                                    <constraint firstItem="MQL-7T-wc7" firstAttribute="width" secondItem="JJm-p8-Xgj" secondAttribute="width" multiplier="0.957219" id="Sm4-29-aTy"/>
+                                    <constraint firstItem="MQL-7T-wc7" firstAttribute="centerX" secondItem="JJm-p8-Xgj" secondAttribute="centerX" id="Xhn-sB-k09"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2o-QK-llJ">
+                                <rect key="frame" x="20" y="165" width="374" height="31"/>
+                                <color key="backgroundColor" red="0.26295091599999998" green="0.88040161130000005" blue="0.1183343097" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kox-JX-vZE"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JJm-p8-Xgj" firstAttribute="height" secondItem="Yax-9p-fWJ" secondAttribute="height" multiplier="0.0513393" id="543-nC-Ua2"/>
+                            <constraint firstItem="u2o-QK-llJ" firstAttribute="top" secondItem="JJm-p8-Xgj" secondAttribute="bottom" constant="6" id="TDv-VM-1D0"/>
+                            <constraint firstItem="u2o-QK-llJ" firstAttribute="trailing" secondItem="JJm-p8-Xgj" secondAttribute="trailing" id="cza-fK-yl4"/>
+                            <constraint firstItem="JJm-p8-Xgj" firstAttribute="top" secondItem="Kox-JX-vZE" secondAttribute="top" constant="25" id="fSW-ns-qjP"/>
+                            <constraint firstItem="JJm-p8-Xgj" firstAttribute="width" secondItem="Yax-9p-fWJ" secondAttribute="width" multiplier="0.903382" id="fvo-zs-aK6"/>
+                            <constraint firstItem="u2o-QK-llJ" firstAttribute="leading" secondItem="JJm-p8-Xgj" secondAttribute="leading" id="khP-zP-grb"/>
+                            <constraint firstItem="JJm-p8-Xgj" firstAttribute="centerX" secondItem="Kox-JX-vZE" secondAttribute="centerX" id="l2G-6l-m6b"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Login" id="vKb-Ft-oym"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="MQL-7T-wc7" id="8jw-0b-z0R"/>
+                        <outlet property="emailView" destination="JJm-p8-Xgj" id="hul-wH-0xx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHp-C5-v1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198.55072463768118" y="124.55357142857142"/>
+        </scene>
         <!--Country List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CountryListController" customModule="LectureProject_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CountryListController" customModule="LectureProject_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pvy-S5-vy3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountryCell" id="fQl-Gi-Zor" customClass="CountryCell" customModule="LectureProject_1" customModuleProvider="target">
@@ -204,12 +258,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ok9-1d-NKS"/>
+                        <segue destination="Zvf-px-I6Q" kind="relationship" relationship="rootViewController" id="OzI-u5-26c"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQk-oZ-d69" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
+            <point key="canvasLocation" x="-554" y="125"/>
         </scene>
     </scenes>
     <resources>
@@ -219,6 +273,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
