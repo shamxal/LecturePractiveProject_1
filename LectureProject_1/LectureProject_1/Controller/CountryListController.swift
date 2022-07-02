@@ -26,6 +26,12 @@ class CountryListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        table.delegate = self
+        table.register(UINib(nibName: "\(NewCountryCell.self)", bundle: nil), forCellReuseIdentifier: "\(NewCountryCell.self)")
+//        progressSetup()
+    }
+    
+    func progressSetup() {
         table.isHidden = true
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.colorProgress = .systemBlue
@@ -36,6 +42,14 @@ class CountryListController: UIViewController {
             ProgressHUD.dismiss()
         }
     }
+    
+    func navigate(index: Int) {
+        let data = model[index]
+        let controller = storyboard?.instantiateViewController(withIdentifier: "CityListController") as! CityListController
+        controller.titleText = data.name
+        controller.cityModel = data.cities
+        show(controller, sender: nil)
+    }
 }
 
 extension CountryListController: UITableViewDataSource, UITableViewDelegate {
@@ -44,20 +58,30 @@ extension CountryListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "\(CountryCell.self)") as! CountryCell
-//        let data = model[indexPath.row]
-//        cell.titleLabel.text = data.name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(NewCountryCell.self)") as! NewCountryCell
+        cell.tag = indexPath.row
+        cell.delegate = self
         cell.titleLabel.text = model[indexPath.row].name
 //        cell.imageView?.image = UIImage(named: model[indexPath.row].flag)
+        
+        cell.buttonCallback = { index in
+            self.navigate(index: index)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let data = model[indexPath.row]
-        let controller = storyboard?.instantiateViewController(withIdentifier: "CityListController") as! CityListController
-        controller.titleText = data.name
-        controller.cityModel = data.cities
-        show(controller, sender: nil)
+//        let data = model[indexPath.row]
+//        let controller = storyboard?.instantiateViewController(withIdentifier: "CityListController") as! CityListController
+//        controller.titleText = data.name
+//        controller.cityModel = data.cities
+//        show(controller, sender: nil)
+    }
+}
+
+extension CountryListController: NewCountryCellDelegate {
+    func actionButtonCalled(index: Int) {
+        navigate(index: index)
     }
 }
