@@ -30,7 +30,7 @@ class LoginController: UIViewController {
         uiSetup()
         animate()
         basicCornerAnimation()
-        basicRotationAnimation()
+        basicRotateAnimation()
         transformAnimation()
     }
     
@@ -40,6 +40,33 @@ class LoginController: UIViewController {
             self.emailCenterConstraint.constant = 0
             self.passwordCenterConstraint.constant = 0
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    func basicCornerAnimation() {
+        let animation = CABasicAnimation(keyPath: "cornerRadius") //#keyPath(CALayer.cornerRadius)
+        animation.fromValue = 0
+        animation.toValue = 60
+        animation.duration = 3
+        animation.autoreverses = true
+        animation.repeatCount = .infinity
+        logoImage.layer.add(animation, forKey: nil)
+    }
+    
+    func basicRotateAnimation() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z") //#keyPath(CALayer.cornerRadius)
+        animation.fromValue = 0
+        animation.toValue = CGFloat.pi * 2
+        animation.duration = 3
+        animation.autoreverses = true
+        animation.repeatCount = .infinity
+//        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        logoImage.layer.add(animation, forKey: nil)
+    }
+    
+    func transformAnimation() {
+        UIView.animate(withDuration: 2, delay: 0, options: [.autoreverse, .repeat]) {
+            self.dummyView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }
     }
     
