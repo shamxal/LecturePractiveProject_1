@@ -31,7 +31,7 @@ class CountryListController: UIViewController {
         table.delegate = self
         table.register(UINib(nibName: "\(NewCountryCell.self)", bundle: nil), forCellReuseIdentifier: "\(NewCountryCell.self)")
 //        progressSetup()
-        Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
             self.jsonSetup()
         }
     }

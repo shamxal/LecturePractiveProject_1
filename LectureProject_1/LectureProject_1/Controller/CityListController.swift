@@ -28,6 +28,10 @@ extension CityListController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CityCell.self)", for: indexPath) as! CityCell
         cell.titleLabel.text = cityModel[indexPath.item].name
         cell.cityImage.image = UIImage(named: cityModel[indexPath.item].image)
+//        UIView.animate(withDuration: TimeInterval(indexPath.item * 1)) {
+//            cell.alpha = 1
+//            self.view.layoutIfNeeded()
+//        }
         return cell
     }
     
@@ -36,7 +40,9 @@ extension CityListController: UICollectionViewDataSource, UICollectionViewDelega
 //        controller.key = cityImages[key]?[indexPath.item] ?? ""
 //        controller.titleText = cityList[key]?[indexPath.item] ?? ""
         controller.city = cityModel[indexPath.item]
-        show(controller, sender: nil)
+        controller.modalTransitionStyle = .flipHorizontal
+        present(controller, animated: true, completion: nil)
+//        show(controller, sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
