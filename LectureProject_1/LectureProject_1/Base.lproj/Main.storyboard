@@ -305,7 +305,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tX3-17-ZBR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hgw-4F-TvV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hgw-4F-TvV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cbp-By-A4z">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>

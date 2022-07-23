@@ -71,8 +71,12 @@ class LoginController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "isLoggedIn") //FLAG
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(CountryListController.self)") as! CountryListController
-        navigationController?.show(controller, sender: nil)
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .overFullScreen
+        present(navigationController, animated: true, completion: nil)
+//        navigationController?.show(controller, sender: nil)
     }
 }
 
